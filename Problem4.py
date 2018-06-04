@@ -4,7 +4,7 @@ largest = 998001 # the largest project of two three-digit numbers
 def getFactorial3Digit(num):
 	factors = []
 	for i in range(1, num + 1):
-		if num % i == 0 and num >= 100 and num < 1000:
+		if num % i == 0 and i >= 100 and i < 1000 and num / i >= 100 and num / i < 1000:
 			factors.append(i)
 	return factors
 
@@ -17,11 +17,12 @@ def isPalindrome(num):
 	else:
 		return False
 
-
+'''Will print out all palindromes that are a product of 
+two 3-digit numbers, in order of largest first'''
 for i in reversed(range(largest)):
 	if isPalindrome(i) == True:
 		factors = getFactorial3Digit(i)
-		if len(factors) != 0:
-			print(factors)
+		if len(factors) == 2:
+			print(i)
 
 
