@@ -2,18 +2,18 @@
 
 python3 Problem3.py [number]
 
-Instead of using a faster method that involved parsing known prime numbers, this script will find the largest prime factor of 
-any integer entered. It also outputs time taken to run the computation as for larger numbers it will be incredibly slow"""
+"""
 
 import sys
 import time
+import math
 
 # Note this does not use recursion (ultimately more efficient) due to python limitations
 def checkPrime(factors):
 	primes = []
 	for num in factors:
 		newFactors = getFactorial(num)
-		if len(newFactors) <= 2:
+		if len(newFactors) <= 1:
 			primes.append(num)
 
 	return primes
@@ -21,7 +21,7 @@ def checkPrime(factors):
 
 def getFactorial(num):
 	factors = []
-	for i in range(1, num + 1):
+	for i in range(1, math.ceil(math.sqrt(num + 1))):
 		if num % i == 0:
 			factors.append(i)
 	return factors
